@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <string.h>
 #define UART_BPS 115200
+
  uint32_t i;
  uint32_t ulADCData;
  uint32_t ulADCBuf;
@@ -34,11 +35,12 @@ int main()
 
 	NVIC_EnableIRQ(EINT3_IRQn);//中断判断按键
 	while(1) 
-	{
-    LCD_DisplayStr(0,0,LEDBuffer);//显示设定报警的值
-		measure();//测量
+	{ ADC2_Init() ;
 		newp();
-		LCD_DisplayStr(0,1,mea);
+    LCD_DisplayStr(0,0,LEDBuffer);//显示设定报警的值
+		ADC_Init();
+		measure();//测量
+	  LCD_DisplayStr(0,1,mea);
 	  sprintf (GcRcvBuf ,"TEMP=%f'C\r\n",T);//将数据传送到pc
 		UART_SendStr(GcRcvBuf);//将数据传送到pc
 		UART_SendStr(elec);

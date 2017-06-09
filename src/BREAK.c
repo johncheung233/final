@@ -3,7 +3,7 @@
 
 
 int change=0;
-extern float T;
+
 
 void SEGinit()
 {

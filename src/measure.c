@@ -1,10 +1,11 @@
 #include "LPC11xx.h"                    // Device header
 #include "stdio.h"
+
 float T;
 float F;
 extern int change;
 extern uint16_t R;
-char mea[20]={0};
+char mea[20];
 char elec[20];
 void measure()
 {
@@ -54,7 +55,7 @@ void measure()
     F=32+1.8*T;
     
 		if(change>=0)		
-		 sprintf (mea,"NOW=%.2f'C%d",T,R);
+		 sprintf (mea,"NOW=%.2f'C%d",T,change);
 		else
 		 sprintf (mea,"NOW=%.2f'F%d",F,change);
 		

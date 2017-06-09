@@ -1,16 +1,17 @@
 #include "LPC11xx.h"                    // Device header
-#include "string.h"
+#include <string.h>
+#include <stdio.h>
 
 uint16_t R;
-uint8_t SETTEMP=30;
+uint8_t SETTEMP;
 char LEDBuffer[20];
 
 void newp()
 {  
-	int o;
 	uint32_t I;
 	uint32_t analog;
 	uint32_t digit ;
+	R=24;
 
 	digit=0;
 		for(I=0;I<10;I++)
@@ -25,24 +26,41 @@ void newp()
 		digit=digit/10;//采样10次进行滤波
 		digit=(digit*3300)/1024;//数字量转换成模拟量
 	 
-		if((0<digit)&&(366>digit))
+		if((0<digit)&&(200>digit))
+		 R=19;
+		if((200<digit)&&(400>digit))
 		 R=20;
-		if((0<digit)&&(412>digit))
+		if((400<digit)&&(600>digit))
 		 R=21;
-		if((824<digit)&&(1236>digit))
+		if((600<digit)&&(800>digit))
 		 R=22;
-		if((1236<digit)&&(1648>digit))
+		if((800<digit)&&(1000>digit))
 		 R=23;
-		if((1648<digit)&&(2060>digit))
+		if((1000<digit)&&(1200>digit))
 		 R=24;
-		if((2060<digit)&&(2472>digit))
+		if((1200<digit)&&(1400>digit))
 		 R=25;
-		if((2472<digit)&&(2884>digit))
+		if((1400<digit)&&(1600>digit))
 		 R=26;
-		if((2884<digit)&&(3296>digit))
+		if((1600<digit)&&(1800>digit))
 		 R=27;
-		if((3296<digit)&&(3708>digit))
-		 R=28;
+		if((1800<digit)&&(2000>digit))
+			R=28 ;  
+		if((2000<digit)&&(2200>digit))
+			R=29;  
+		if((2200<digit)&&(2400>digit))
+			R=30;  
+		if((2400<digit)&&(2600>digit))
+			R=31;  
+		if((2600<digit)&&(2800>digit))
+			R=32;
+    if((2800<digit)&&(3000>digit))
+			R=33;
+		if((3000<digit)&&(3200>digit))
+			R=34;
+		if((3200<digit)&&(3400>digit))
+			R=35;
+			
 		SETTEMP=R;
     sprintf ( LEDBuffer,"SET=%d'C",SETTEMP);
 	}
