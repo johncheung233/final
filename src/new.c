@@ -7,7 +7,7 @@ char LEDBuffer[20];
 
 void newp()
 {  
-
+	int o;
 	uint32_t I;
 	uint32_t analog;
 	uint32_t digit ;
