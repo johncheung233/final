@@ -14,8 +14,8 @@ void KEYinit()
 {
 	LPC_GPIO3->DIR &=~(1<<0);
 	LPC_GPIO3->DIR &=~(1<<1);
-	LPC_GPIO3->DIR &=~(1<<2);
-	LPC_GPIO3->DIR &=~(1<<3);
+//	LPC_GPIO3->DIR &=~(1<<2);
+//	LPC_GPIO3->DIR &=~(1<<3);
 }
 
 void BreakInit()
@@ -28,13 +28,13 @@ void BreakInit()
 	LPC_GPIO3->IS&=~(1<<1);
 	LPC_GPIO3->IEV&=~(1<<1);
 	
-  LPC_GPIO3->IE|=(1<<2);
-	LPC_GPIO3->IS&=~(1<<2);
-	LPC_GPIO3->IEV&=~(1<<2);
-	
-	LPC_GPIO3->IE|=(1<<3);
-	LPC_GPIO3->IS&=~(1<<3);
-	LPC_GPIO3->IEV&=~(1<<3);
+//  LPC_GPIO3->IE|=(1<<2);
+//	LPC_GPIO3->IS&=~(1<<2);
+//	LPC_GPIO3->IEV&=~(1<<2);
+//	
+//	LPC_GPIO3->IE|=(1<<3);
+//	LPC_GPIO3->IS&=~(1<<3);
+//	LPC_GPIO3->IEV&=~(1<<3);
 }
 
 void Delayb(uint32_t ulTime)

@@ -5,13 +5,13 @@ float T;
 float F;
 extern int change;
 extern uint16_t R;
-char mea[20];
+char mea[40];
 char elec[20];
 void measure()
 {
 	uint32_t i;
 	double  ulADCData;
-	uint32_t ulADCBuf;
+	uint32_t  ulADCBuf;
 	double res;
 
 		 
@@ -53,12 +53,12 @@ void measure()
 			T=37+(6357-res)/200;
 		
     F=32+1.8*T;
-    
-		if(change>=0)		
-		 sprintf (mea,"NOW=%.2f'C%d",T,change);
+  
+		if(change>=0)			
+		 sprintf (mea,"NOW=%.2f'C%2d",T,change);
 		else
-		 sprintf (mea,"NOW=%.2f'F%d",F,change);
+		 sprintf (mea,"NOW=%.2f'F%2d",F,change);
 		
-		sprintf (elec,"NOW=%fMV\r\n",res); 
+		sprintf (elec,"NOW=%fmv\r\n",ulADCData); 
 		
 }

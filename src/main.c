@@ -18,12 +18,10 @@ int main()
 
 	extern uint8_t SETTEMP;
 	extern char LEDBuffer[20];
-	extern char mea[20];
+	extern char mea[40];
 	extern char elec[20];
 	extern 	float T;
 	char GcRcvBuf[20];
-	char warn[20];
-	char warnbuff[]="warning!!";
 	BreakInit();
 	KEYinit();
 	SEGinit();
@@ -47,11 +45,10 @@ int main()
 		if(SETTEMP<=T)
 		{
 			alarm();
-			sprintf (LEDBuffer,"%s",warnbuff);//ÏÔÊ¾welcome
-	    LCD_DisplayStr(0,0,LEDBuffer);
+	    LCD_DisplayStr(8,0,"warning");
 		}
 		else
-			;
+			LCD_DisplayStr(8,0,"       ");;
 	}
 
 }
