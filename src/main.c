@@ -36,6 +36,7 @@ int main()
 		measure();//测量
 	  LCD_DisplayStr(0,1,mea);
 	  sprintf (GcRcvBuf ,"TEMP=%f'C\r\n",T);//将数据传送到pc
+		GcRcvBuf[7]='.';
 		UART_SendStr(GcRcvBuf);//将数据传送到pc
 		UART_SendStr(elec);
 		if(SETTEMP<=T)

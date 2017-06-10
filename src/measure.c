@@ -61,7 +61,9 @@ void measure()
 		  mea[6]='.';
 		}
 		
-		 sprintf (elec,"NOW=%fmv\r\n",res); 
+		 sprintf (elec,"NOW=%fmv\r\n",res);
+		 elec[8]='.';
+		
 		
 		
 }
