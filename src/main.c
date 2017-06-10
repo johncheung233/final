@@ -10,16 +10,12 @@
 #include <string.h>
 #define UART_BPS 115200
 
- uint32_t i;
- uint32_t ulADCData;
- uint32_t ulADCBuf;
 int main()
-	{
-
-	extern uint8_t SETTEMP;
+{
+	extern float SETTEMP;
 	extern char LEDBuffer[20];
 	extern char mea[40];
-	extern char elec[20];
+	extern char elec[40];
 	extern 	float T;
 	char GcRcvBuf[20];
 	BreakInit();
@@ -45,10 +41,10 @@ int main()
 		if(SETTEMP<=T)
 		{
 			alarm();
-	    LCD_DisplayStr(8,0,"warning");
+	    LCD_DisplayStr(9,0,"warning!");
 		}
 		else
-			LCD_DisplayStr(8,0,"       ");;
+			LCD_DisplayStr(9,0,"       ");;
 	}
 
 }

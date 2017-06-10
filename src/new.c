@@ -2,29 +2,29 @@
 #include <string.h>
 #include <stdio.h>
 
-uint16_t R;
-uint8_t SETTEMP;
+float R;
+float SETTEMP;
 char LEDBuffer[20];
 
 void newp()
 {  
 	uint32_t I;
 	uint32_t analog;
-	uint32_t digit ;
+	float digit ;
 	R=24;
 
-	digit=0;
-		for(I=0;I<10;I++)
-		{
-			LPC_ADC ->CR |=(1<<24);//立即转换
-			while((LPC_ADC->DR[0]&0X80000000)==0);//读取DR0的Done
-			analog=LPC_ADC ->DR[0];//读取结果寄存器
-			analog=(analog>>6)&0x3ff;//数据 从第六位开始存储，占据10位
-			digit+=analog ;//数据累加
+	digit=0.0;
+	for(I=0;I<10;I++)
+	{
+		LPC_ADC ->CR |=(1<<24);//立即转换
+		while((LPC_ADC->DR[0]&0X80000000)==0);//读取DR0的Done
+		analog=LPC_ADC ->DR[0];//读取结果寄存器
+		analog=(analog>>6)&0x3ff;//数据 从第六位开始存储，占据10位
+		digit=analog*1.0+digit;//数据累加
 			
-		}
-		digit=digit/10;//采样10次进行滤波
-		digit=(digit*3300)/1024;//数字量转换成模拟量
+	}
+		digit=digit*1.0/10;//采样10次进行滤波
+		digit=(digit*3300)*1.0/1024;//数字量转换成模拟量
 	 
 		if((0<digit)&&(200>digit))
 		 R=19;
@@ -62,5 +62,5 @@ void newp()
 			R=35;
 			
 		SETTEMP=R;
-    sprintf ( LEDBuffer,"SET=%d'C",SETTEMP);
+    sprintf ( LEDBuffer,"SET=%.f'C",SETTEMP);
 	}
